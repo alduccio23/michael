@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - Alduccio23</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 3rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            min-height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: slideInDown 0.8s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        section {
+            padding: 4rem 2rem;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            color: #667eea;
+            text-align: center;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .about-text h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1rem;
+            line-height: 1.8;
+        }
+
+        .projects {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 2px solid #f0f0f0;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .project-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        .project-info h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-info p {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-item {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 4px solid #667eea;
+            transition: background 0.3s;
+        }
+
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        .skill-item h4 {
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .contact-form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: #667eea;
+        }
+
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">Alduccio23</div>
+            <ul>
+                <li><a href="#about">Chi Sono</a></li>
+                <li><a href="#projects">Progetti</a></li>
+                <li><a href="#skills">Competenze</a></li>
+                <li><a href="#contact">Contatti</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Ciao! Sono Alduccio23</h1>
+            <p>Sviluppatore Passionato | Creativo | Innovatore</p>
+            <a href="#contact" class="cta-button">Contattami</a>
+        </section>
+
+        <div class="container">
+            <section id="about">
+                <h2>Chi Sono</h2>
+                <div class="about-content">
+                    <div class="about-text">
+                        <h3>Benvenuto nel mio portfolio!</h3>
+                        <p>
+                            Sono uno sviluppatore appassionato di tecnologia e innovazione. Mi specializo nella creazione di soluzioni web moderne e performanti, utilizzando le tecnologie più attuali.
+                        </p>
+                        <p>
+                            Con esperienza in sviluppo frontend e backend, mi dedico a creare esperienze utente straordinarie mantenendo la qualità del codice.
+                        </p>
+                        <p>
+                            Sono sempre alla ricerca di nuove sfide e opportunità per imparare e crescere nel mondo dello sviluppo software.
+                        </p>
+                    </div>
+                    <div style="padding: 2rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 10px; color: white; text-align: center;">
+                        <p style="font-size: 0.9rem; margin-bottom: 1rem;">Disponibile per nuovi progetti</p>
+                        <h3>📧 Collaboriamo!</h3>
+                    </div>
+                </div>
+            </section>
+
+            <section id="projects">
+                <h2>I Miei Progetti</h2>
+                <div class="projects">
+                    <div class="project-card">
+                        <div class="project-image">💻</div>
+                        <div class="project-info">
+                            <h3>Progetto Web</h3>
+                            <p>Una moderna applicazione web costruita con tecnologie frontend avanzate e architettura scalabile.</p>
+                            <a href="#" class="cta-button" style="font-size: 0.9rem;">Visualizza</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">🚀</div>
+                        <div class="project-info">
+                            <h3>App Mobile</h3>
+                            <p>Un'applicazione mobile intuitiva e performante, pensata per offrire la migliore esperienza utente.</p>
+                            <a href="#" class="cta-button" style="font-size: 0.9rem;">Visualizza</a>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-image">🎨</div>
+                        <div class="project-info">
+                            <h3>Design System</h3>
+                            <p>Un sistema di design completo per garantire coerenza e qualità in tutti i progetti digitali.</p>
+                            <a href="#" class="cta-button" style="font-size: 0.9rem;">Visualizza</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="skills">
+                <h2>Le Mie Competenze</h2>
+                <div class="skills">
+                    <div class="skill-item">
+                        <h4>🎨 Frontend</h4>
+                        <p>HTML, CSS, JavaScript, React, Vue</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>⚙️ Backend</h4>
+                        <p>Node.js, Python, Express, FastAPI</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>💾 Database</h4>
+                        <p>MongoDB, PostgreSQL, MySQL</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>🛠️ Tools</h4>
+                        <p>Git, Docker, Webpack, npm</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>📱 Mobile</h4>
+                        <p>React Native, Flutter, Swift</p>
+                    </div>
+                    <div class="skill-item">
+                        <h4>☁️ Cloud</h4>
+                        <p>AWS, Firebase, Heroku</p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="contact">
+                <h2>Contattami</h2>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Nome</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="subject">Oggetto</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Messaggio</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="cta-button">Invia Messaggio</button>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Alduccio23 Portfolio. Tutti i diritti riservati.</p>
+            <div class="social-links">
+                <a href="https://github.com" title="GitHub">🐙</a>
+                <a href="https://linkedin.com" title="LinkedIn">💼</a>
+                <a href="https://twitter.com" title="Twitter">🐦</a>
+                <a href="mailto:your@email.com" title="Email">✉️</a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
